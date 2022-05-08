@@ -16,9 +16,13 @@ const useDarkMode = (defaultValue?: boolean): [boolean, ToggleDarkMode] => {
   const toggleDarkMode = () => setDarkMode(!isDarkMode);
 
   useEffect(() => {
-    setDarkMode(isDarkOS)
+    if (isDarkMode) {
+      document.body.classList.add('dark')
+    } else {
+      document.body.classList.remove('dark')
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDarkOS])
+  }, [isDarkMode])
 
   return [
     isDarkMode,
